@@ -1,14 +1,13 @@
 'use client';
 
-import { useActionState } from 'react';
+import { useFormState } from 'react';
 import { shareMeal } from '@/lib/actions';
 import ImagePicker from '@/components/meals/image-picker';
 import MealsFormSubmit from '@/components/meals/meals-form-submit';
 import classes from './page.module.css';
 
 export default function ShareMealPage() {
-  const [state, formAction] = useActionState(async (prev, formData) => {
-    // ✅ 直接呼叫 server action
+  const [state, formAction] = useFormState(async (prev, formData) => {
     return await shareMeal(formData);
   }, { message: null });
 
